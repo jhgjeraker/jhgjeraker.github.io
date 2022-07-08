@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>J.H.Gjeraker</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <header>
+    <ul class="breadcrumb">
+      <li><a href="/index.html">Home</a></li>
+      <li>Code Blocks</li>
+    </ul>
+  </header>
+  <body>
+    <h1>Code Blocks</h1>
+    <p>
+    Inline <code>code</code> works just as expected with minimal css.
+    </p>
+
+    <p>
+      Code blocks on the other hand, not so much.
+      I found this weird hack where you first wrap <code>&lt;code&gt;</code> in <code>&lt;pre&gt;</code>,
+      then juggle the indents through css. Strange, but it seems to works just fine!
+    </p>
+    <pre><code>
+      <i>for i in range(3):</i>
+      <i>    print(i)</i>
+
+    </code></pre>
+
+    <p>
+      One can even highlight and copy the contents without absolutely destroying the indent,
+      something that is becoming more rare as websites ever strive to become more fancy.
+    </p>
+  </body>
+</html>
