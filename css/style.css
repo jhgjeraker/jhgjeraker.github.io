@@ -25,12 +25,17 @@
     --fg-anchor: var(--accent);
 }
 
+html {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
 body {
     color: var(--fg);
     background-color: var(--bg);
     font-size: 18px;
     font-family: "iA Writer Mono S";
-    margin: 50px;
+    margin: 30px;
 }
 
 hr {
