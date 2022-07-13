@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>J.H.Gjeraker</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <header>
+    <ul class="breadcrumb">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/content/projects/projects.html">Projects</a></li>
+      <li>Bunshi</li>
+    </ul>
+  </header>
+  <body>
+
+    <h1>Bunshi (分子)</h1>
+    <p>
+      A multi-input kanji breakdown CLI.
+    </p>
+    <ul>
+      <li><a href="https://github.com/jhgjeraker/bunshi" target="_blank" rel="noopener noreferrer">Github</a></li>
+    </ul>
+    <p>
+      Kanji may well be one of the hardest parts about learning Japanese, a language that is otherwise quite approachable. It has a rich history, grammar that is arguably simpler than English, and a well-designed kana syllabary that makes me question why we even bother with the Latin alphabet. But kanji is hard.
+    </p>
+    <p>
+    There are well over 50 000 kanji, but only the most astute scholars even bother with that number [1]. Fortunately, the Japanese government also thinks kanji is hard, which is probably why they released the Jouyou Kanji <code>常用漢字</code>, a curated list of some 2000 kanji that represent a literary baseline [2].
+    </p>
+    <p>
+    Learning the Jouyou Kanji is, however, still an undertaking. Methods like <a href="https://en.wikipedia.org/wiki/Remembering_the_Kanji_and_Remembering_the_Hanzi" target="_blank" rel="noopener noreferrer">RTK</a>, <a href="https://keystojapanese.com/klc/" target="_blank" rel="noopener noreferrer">KKLC</a>, and <a href="https://www.wanikani.com/" target="_blank" rel="noopener noreferrer">WaniKani</a> attempt to alleviate the problem by not teaching the kanji directly, but rather as a collection of components onto which they attach custom mnemonics in a predefined order. This is not how Japanese children learn kanji, but it is easy to see the appeal.
+    </p>
+    <p>
+    For instance, instead of learning <i>like</i> <code>好</code> through rote memorization, see the <i>woman</i> <code>女</code> and <i>child</i> <code>子</code> components. Imagine a woman holding her child, a child that she (hopefully) <i>likes</i>. From experience, this method of learning through association resonates with my brain, and I've had good success with it.
+    </p>
+    <p>
+      Bunshi is a tiny tool I made to fill a hole in my suite of study techniques. Where I before had to open a book or crawl the web I can now quickly reference the kanji component breakdowns directly in the terminal. This reduced resistance has led to a more active lookup, a positive when the goal is memorization.
+    </p>
+
+    <hr>
+    <h2>Usage</h2>
+    <p>
+      Input a single kanji, word, or a full sentence, and the tool will decompose each kanji.
+    </p>
+    <pre><code>
+      <i>bunshi 好きな本</i>
+      <i></i>
+    </code></pre>
+    <p>
+      The results include the meaning, On'yomi and Kun'yomi readings, and each named base component.
+    </p>
+    <pre><code>
+      <i>好きな本</i>
+      <i>│    │</i>
+      <i>│    └── 本, book ─ ホン、もと</i>
+      <i>│        ├────────────────</i>
+      <i>│        ├── 一, one</i>
+      <i>│        └── 木, tree</i>
+      <i>│</i>
+      <i>└── 好, like ─ コウ、このむ、すく</i>
+      <i>    ├─────────────────────</i>
+      <i>    ├── 子, child</i>
+      <i>    └── 女, woman</i>
+      <i></i>
+    </code></pre>
+    <p>
+      See the <a href="https://github.com/jhgjeraker/bunshi" target="_blank" rel="noopener noreferrer">Github Page</a> for more usage details.
+    </p>
+
+    <hr>
+    <h2>Breakdown Content</h2>
+    <p>
+      While there are numerous separate lists of kanji, meanings, and components around the web, I could not locate a single free source that mapped the relationship between them. As a result, Bunshi includes a breakdown map I've generated myself by combining the following open-source indexes.
+    </p>
+    <ul>
+      <li><a href="https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji" target="_blank" rel="noopener noreferrer">Jouyou Kanji</a>: Used as kanji primary index.</li>
+      <li><a href="https://www.edrdg.org/krad/kradinf.html" target="_blank" rel="noopener noreferrer">Kradfile</a>: Used to map components to kanji.</li>
+      <li><a href="https://en.wikipedia.org/wiki/Kangxi_radical" target="_blank" rel="noopener noreferrer">Kangxi Radicals</a>: Used to source component names.</li>
+    </ul>
+    <p>
+      This works well as a base, but optimally Bunshi would use the same breakdowns as found in either RTK, KKLC, or WaniKani. Unfortunately those are proprietery and I will, of course, not steal their content. 
+    </p>
+    <p>
+      However, Bunshi does support custom breakdown maps using the <code>--breakdown</code> flag, and if you happen to own either course/book, one could in theory generate and use a breakdown using the same material.
+    </p>
+
+    <hr>
+    <h2>Sources</h2>
+    <ol>
+      <li><a href="https://en.wikipedia.org/wiki/Japanese_writing_system" target="_blank" rel="noopener noreferrer">Japanese Writing System</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji" target="_blank" rel="noopener noreferrer">Jouyou Kanji</a></li>
+    </ol>
+
+  </body>
+</html>
