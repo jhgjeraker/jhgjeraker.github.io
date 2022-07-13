@@ -26,15 +26,17 @@
 }
 
 html {
+    color: var(--fg);
+    background-color: var(--bg);
+
+    font-size: 18px;
+    font-family: "iA Writer Mono S";
+
     max-width: 1080px;
     margin: 0 auto;
 }
 
 body {
-    color: var(--fg);
-    background-color: var(--bg);
-    font-size: 18px;
-    font-family: "iA Writer Mono S";
     margin: 30px;
 }
 
