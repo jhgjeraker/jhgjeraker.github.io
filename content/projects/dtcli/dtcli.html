@@ -1,0 +1,128 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>J.H.Gjeraker</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <header>
+    <ul class="breadcrumb">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/content/projects/projects.html">Projects</a></li>
+      <li>disruptive-cli</li>
+    </ul>
+  </header>
+  <body>
+
+    <h1>disruptive-cli</h1>
+    <p>
+      Unofficial CLI for the Disruptive Technologies (DT) API.
+    </p>
+    <ul>
+      <li><a href="https://github.com/jhgjeraker/disruptive-cli" target="_blank" rel="noopener noreferrer">Github</a></li>
+    </ul>
+    <p>
+      At the time of writing, I'm employed at DT as an Application Engineer, which entails all sorts of internal projects, experiments, and customer-centric development. I've gotten quite familiar with our public APIs, including DT Studio, our customer front-end, both key in handling quantities of device and sensor data.
+    </p>
+    <p>
+      I think they're both well-designed tools that get the job done, but I've found there to be a gap in the toolchain for tasks that are too small to write a Python or Bash API script, but too complex for a GUI front-end to handle. This is, however, where CLIs fit in perfectly.
+    </p>
+    <p>
+      I created <code>disruptive-cli</code> to fill this gap. It is essential a wrapper on top of the <a href="https://developer.disruptive-technologies.com/api/libraries/python/client/quickstart.html#client-quickstart" target="_blank" rel="noopener noreferrer">DT Python API</a>, but with the extra convenience of a CLI with functionalities like chaining commands through piping and formatting the output to common filetypes.
+    </p>
+    <p>
+      Though I'm a frequent user of CLIs both through work and outside, I had never created one. To avoid my own ingrained biases, the design is heavily inspired by the excellent <a href="https://clig.dev/" target="_blank" rel="noopener noreferrer">CLI Guidelines</a>, a must-read for anyone looking into designing their own CLI.
+    </p>
+
+    <hr>
+    <h2>Usage</h2>
+    <p>
+      Call the <code>dt</code> command using a <code>dt &lt;NOUN&gt; &lt;VERB&gt;</code> syntax.
+    </p>
+    <pre><code>
+      <i>dt project list</i>
+    </code></pre>
+    <p>
+    See <code>dt -h</code> or the <a href="https://github.com/jhgjeraker/disruptive-cli" target="_blank" rel="noopener noreferrer">Github</a> page for more usage details.
+    </p>
+
+    <hr>
+    <h2>Formats</h2>
+    <p>
+      A human-readable tabular output is prioritized, while CSV, TSV, and JSON is also supported.
+    </p>
+
+    <h3>Tabular Output</h3>
+    <p>
+      It was an interesting challenge to implement the table structure. It should be easy to read while also being natively supported by tools like <code>awk</code>. One should also be able to chain commands using pipes, which means support for including/excluding columns.
+    </p>
+    <p>
+    The result was a simple but functional table where column values decide their width dynamically. Headers are case-insensitive and be hidden using <code>--no-header</code>, and columns isolated with the <code>--include</code> flag.
+    </p>
+    <pre><code>
+      <i>PROJECT-ID             DISPLAY-NAME                     SENSOR-COUNT   CLOUD-CONNECTOR-COUNT</i>
+      <i>c10humqoss90036gu530   jhg-playground Inventory         14             0</i>
+      <i>c14u9p094l47cdv1o3pg   main                             11             1</i>
+      <i>br1rrd35443g009mhk60   Default                          0              0</i>
+      <i>c34c05mh9dh7pohjtorg   Sensors I don't know where are   4              1</i>
+      <i>c9akpca7090rjibacslg   B                                9              0</i>
+      <i>c75ivl3go7df88ctp0ug   CO2 Testing                      8              0</i>
+      <i>c35emu6h9dh7pohjtp4g   Oslo Office                      82             1</i>
+    </code></pre>
+
+    <h3>Common Formats</h3>
+    <p>
+    Depending on usage, writing the output to a common file format can save a lot of time, and <code>disruptive-cli</code> supports all of the following formats using their namesake flags.
+    </p>
+    <ul>
+      <li><code>--csv</code></li>
+      <li><code>--tsv</code></li>
+      <li><code>--json</code></li>
+    </ul>
+    <p>
+      It is supported to pipe the output of <code>--json</code> into <code>jq</code>.
+    </p>
+
+    <hr>
+    <h2>Chaining Commands</h2>
+    <p>
+    Piping is one of the most powerful features of a CLI, and I'm pretty happy with how I've implemented the behavior. After some back and forth I decided to use the <code>-</code> symbol for pipe input, where the values come from isolated column values in the preceding.
+    </p>
+    <p>
+      In the following example all project IDs are piped into a command which lists all devices in a single project, resulting in a list of all devices in all projects.
+    </p>
+    <pre><code>
+      <i>dt project list --include project-id | dt device list - --device-type temperature</i>
+    </code></pre>
+    <p>
+      Notice the <code>-</code> symbol which replaces each project ID in <code>dt device list</code>.
+    </p>
+
+    <hr>
+    <h2>Interactive Mode</h2>
+    <p>
+      Quite a few endpoints on the DT API have a lot of optional arguments, and an interactive mode lets me take it one step at a time. Piping is currently not supported whilst using interactive mode.
+    </p>
+    <p>
+      For example, in normal operation, an emulated device can be created as shown below.
+    </p>
+    <pre><code>
+      <i>dt emulator create &lt;PROJECT_ID&gt; &lt;DEVICE_TYPE&gt; &lt;DISPLAY_NAME&gt; &lt;LABELS&gt;</i>
+    </code></pre>
+    <p>
+      Sometimes it might be more manageable using the interactive mode, the you focus on one line at a time.
+    </p>
+    <pre><code>
+      <i>dt emulator create -i</i>
+      <i>required &gt; project_id: &lt;PROJECT_ID&gt;</i>
+      <i>required &gt; device_type: &lt;DEVICE_TYPE&gt;</i>
+      <i>optional &gt; display_name: &lt;DISPLAY_NAME&gt;</i>
+      <i>optional &gt; labels: &lt;LABELS&gt;</i>
+    </code></pre>
+    <p>
+      You could, of course, just check the possible arguments using <code>-h</code> flag instead.
+    </p>
+
+  </body>
+</html>
