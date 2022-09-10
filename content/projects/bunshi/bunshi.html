@@ -41,26 +41,29 @@
     <hr>
     <h2>Usage</h2>
     <p>
-      Input a single kanji, word, or a full sentence, and the tool will decompose each kanji.
+      Bunshi works with single kanji, words, or complete sentences.
     </p>
     <pre><code>
-      <i>bunshi 好きな本</i>
+      <i>bunshi これ便利ですね</i>
     </code></pre>
     <p>
-      The results include the meaning, On'yomi and Kun'yomi readings, and each named base component.
+      Each kanji is shown with its meaning, On'yomi and Kun'yomi readings, and component breakdown.
     </p>
     <pre><code>
-      <i>好きな本</i>
-      <i>│    │</i>
-      <i>│    └── 本, book ─ ホン、もと</i>
-      <i>│        ├──────────────────</i>
-      <i>│        ├── 一, one</i>
-      <i>│        └── 木, tree</i>
-      <i>│</i>
-      <i>└── 好, like ─ コウ、このむ、すく</i>
-      <i>    ├─────────────────────────</i>
-      <i>    ├── 子, child</i>
-      <i>    └── 女, woman</i>
+      <i>これ便利ですね</i>
+      <i>   │└ 利, profit ─ リ、きく</i>
+      <i>   │  ├ 禾, grain</i>
+      <i>   │  │ ├ 丿, slash</i>
+      <i>   │  │ └ 木, tree</i>
+      <i>   │  └ 刂, knife</i>
+      <i>   └ 便, convenience ─ ベン、ビン、たより</i>
+      <i>     ├ 亻, man</i>
+      <i>     └ 更, grow late</i>
+      <i>       ├ 一, one</i>
+      <i>       ├ 日, day</i>
+      <i>       └ 乂,</i>
+      <i>         ├ 丿, slash</i>
+      <i>         └ 乀, slash</i>
     </code></pre>
     <p>
       See the <a href="https://github.com/jhgjeraker/bunshi" target="_blank" rel="noopener noreferrer">Github Page</a> for more usage details.
@@ -72,8 +75,8 @@
       While there are numerous separate lists of kanji, meanings, and components around the web, I could not locate a single free source that mapped the relationship between them. As a result, Bunshi includes a breakdown map I've generated myself by combining the following open-source indexes.
     </p>
     <ul>
+      <li><a href="https://github.com/cjkvi/cjkvi-ids" target="_blank" rel="noopener noreferrer">cjkvi-ids</a>: Used to map components to kanji.</li>
       <li><a href="https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji" target="_blank" rel="noopener noreferrer">Jouyou Kanji</a>: Used as kanji primary index.</li>
-      <li><a href="https://www.edrdg.org/krad/kradinf.html" target="_blank" rel="noopener noreferrer">Kradfile</a>: Used to map components to kanji.</li>
       <li><a href="https://en.wikipedia.org/wiki/Kangxi_radical" target="_blank" rel="noopener noreferrer">Kangxi Radicals</a>: Used to source component names.</li>
     </ul>
     <p>
