@@ -19,11 +19,11 @@
     --fg: #C8C5C1;
     --fg-muted: #9F988E;
 
-    --accent: #ee7c2b;
+    --accent: #de8545;
 
     /* Code Blocks */
     --fg-code: var(--accent);
-    --bg-code: #2D2E2F;
+    --bg-code: #313334;
 
     /* Links */
     --fg-anchor: var(--accent);
@@ -52,8 +52,15 @@ hr {
     margin-bottom: 20px;
 }
 
+/* Links */
 a {
     color: var(--fg-anchor);
+    text-decoration: none;
+}
+
+/* Links when hovered */
+a:hover {
+  text-decoration: underline;
 }
 
 img {
@@ -74,16 +81,15 @@ code {
     background-color: var(--bg-code);
     font-size: var(--font-size);
     font-family: var(--font-mono);
+    padding: 3px;
 }
 
 pre > code {
-    color: var(--fg-code);
-    background-color: var(--bg-code);
     display: block;
     white-space: pre-line;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 25px;
     overflow: auto;
 }
 
