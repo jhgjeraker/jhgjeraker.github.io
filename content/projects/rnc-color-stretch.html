@@ -1,0 +1,127 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>J. H. Gjeraker</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <header>
+    <ul class="breadcrumb">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/content/projects/projects.html">Projects</a></li>
+      <li>rnc-color-stretch</li>
+    </ul>
+  </header>
+  <body>
+
+    <h1>Python Adaptation of rnc-color-stretch</h1>
+    <p>
+      My Python adaptation of <code>rnc-color-stretch</code>, an image stretching software written by <a href="https://clarkvision.com/articles/astrophotography.software/rnc-color-stretch/" target="_blank" rel="noopener noreferrer">Roger N. Clark</a>.
+    </p>
+
+    <ul>
+      <li><a href="https://github.com/jhgjeraker/rnc-color-stretch" target="_blank" rel="noopener noreferrer">Github: Python Source Code</a></li>
+    </ul>
+
+    <hr>
+    <h2>Motivation</h2>
+    <p>
+      Post-processing is, in my opinion, one of the best parts of the astrophotography hobby. It can be quite relaxing to sit into the hours of the night with a cup of tea and slowly reveal faint details in an image you took earlier. However, when time is more scarce and you just want to see if the shoot was a success, getting even a decent result can be quite challenging on short notice.
+    </p>
+
+    <p>
+      Roger N. Clark's work on the <code>rnc-color-stretch</code> software aims to generate a good color-preserving stretch by utilizing a predefined algorithm coded in <a href="http://davinci.asu.edu/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer">davinci</a>. If used correctly, it can produce in minutes what would otherwise take hours. I still think the human touch through manual editing can produce better results, but it is certainly an interesting and powerful approach.
+    </p>
+
+    <p>
+     <a href="http://davinci.asu.edu/index.php?title=Main_Page" target="_blank" rel="noopener noreferrer">Davinci</a> is, however, quite obscure and a pain to set up. Additionally, the <code>rnc-color-stretch</code> itself has not, as of writing, been updated since 2017. I therefore decided to adapt the source code to Python, a framework I'm much more comfortable in. It also presented an excellent opportunity for me to learn more about computational image processing, a field I find most interesting.
+    </p>
+
+    <hr>
+    <h2>Usage</h2>
+    <p>
+      All code is contained in a single file and can be run by the following commands.
+    </p>
+    <pre><code>
+      <i>python rnc_color_stretch.py &lt;image&gt;.tiff</i>
+
+    </code></pre>
+    <p>
+      Configuration parameters can be seen by calling with the helper flag.
+    </p>
+    <pre><code>
+      <i>python rnc_color_stretch.py --help</i>
+
+    </code></pre>
+
+    <hr>
+    <h2>Result Comparison</h2>
+    <p>
+    Below you will find a series of photographs I've taken. Each image is represented by their unedited stack, original davinci and my Python <code>rnc-color-stretch</code> implementations, and my manual edit using GIMP. This project's goal is, of course, that the davinci and Python implementations should match.
+    </p>
+
+    <p>
+    Each run of the <code>rnc-color-stretch</code> used the same parameters to produce an event testbench. Better individual results can be achieved by fine-tuning parameters per image.
+    </p>
+
+    <p>
+      I recommend opening the images in a new tab for a larger view. You can read more details about each individual shoot by clicking their related title.
+    </p>
+
+    
+    <a href="/content/astrophotography/20211224-orion-nebula.html" target="_blank" rel="noopener noreferrer"><h3>2021-12-24 Orion</h3></a>
+    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20211224-orion-mosaic.jpeg">
+    
+    <a href="/content/astrophotography/20211225-andromeda.html" target="_blank" rel="noopener noreferrer"><h3>2021-12-25 Andromeda</h3></a>
+    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20211225-andromeda-mosaic.jpeg">
+    
+    <a href="/content/astrophotography/20211225-pleiades.html" target="_blank" rel="noopener noreferrer"><h3>2021-12-25 Pleiades</h3></a>
+    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20211225-pleiades-mosaic.jpeg">
+    
+    <a href="/content/astrophotography/20220902-milky-way.html" target="_blank" rel="noopener noreferrer"><h3>2022-09-02 Milky Way</h3></a>
+    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20220902-milky-way-mosaic.jpeg">
+    
+    <a href="/content/astrophotography/20221006-andromeda.html" target="_blank" rel="noopener noreferrer"><h3>2022-10-06 Andromeda</h3></a>
+    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20221006-andromeda-mosaic.jpeg">
+
+    <h3>Thoughts</h3>
+    Overall I think the <code>rnc-color-stretch</code> does an excellent job for what it is. I am no veteran astrophotography editor, but the algorithm does a good job matching both the color and details of the manual stretches, in most cases. There are, of course, a certain air of subjective bias in all post-processing, and I do still prefer the manual edits, but this will certainly become another tool in my kit going forward.
+
+    <hr>
+    <h2>Copyright and Licence</h2>
+    <p>
+      Copyright (c) 2016, Roger N. Clark, clarkvision.com
+    </p>
+
+    <p>
+      <a href="http://www.clarkvision.com/articles/astrophotography.software/rnc-color-stretch/" target="_blank" rel="noopener noreferrer">http://www.clarkvision.com/articles/astrophotography.software/rnc-color-stretch/</a>
+      
+    </p>
+
+    <p>
+      All rights reserved.
+    </p>
+
+    <p>
+      GNU General Public License <a href="https://www.gnu.org/licenses/gpl.html" target="_blank" rel="noopener noreferrer">https://www.gnu.org/licenses/gpl.html</a>
+    </p>
+
+    <p>
+      Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+    </p>
+
+    <ul>
+      <li>
+        Redistributions of the program must retain the above copyright notice, this list of conditions and the following disclaimer.
+      </li>
+      <li>
+        Neither Roger N. Clark, clarkvision.com nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. 
+      </li>
+    </ul>
+
+    <p>
+      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+    </p>
+  </body>
+</html>
