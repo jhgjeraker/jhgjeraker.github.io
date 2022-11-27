@@ -64,9 +64,19 @@ a:hover {
 }
 
 img {
-    max-width: 100%;
+    max-width: 96%;
     margin-top: 15px;
     margin-bottom: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+video {
+    max-width: 96%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 li+li {
@@ -148,4 +158,44 @@ h3 {
 /*                                                  */
 td {
   vertical-align: top;
+}
+
+/* ------------------------------------------------ */
+/*                      Math                        */
+/*                                                  */
+.mathblock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+  font-family: "serif";
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.matrix {
+    position: relative;
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.matrix:before, .matrix:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 1px solid var(--fg);
+    width: 6px;
+    height: 100%;
+}
+.matrix:before {
+    left: -6px;
+    border-right: 0px;
+}
+.matrix:after {
+    right: -6px;
+    border-left: 0px;
+}
+.matrix td {
+    padding: 5px;    
+    text-align: center;
 }
