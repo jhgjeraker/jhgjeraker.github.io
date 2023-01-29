@@ -65,16 +65,16 @@ a:hover {
 
 img {
     max-width: 96%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 2%;
     margin-right: 2%;
 }
 
 video {
     max-width: 96%;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: 2%;
     margin-right: 2%;
 }
@@ -113,14 +113,14 @@ pre > code > i {
 /*                                                  */
 /* Style the list */
 ul.breadcrumb {
-  padding: 10px 16px;
+  padding: 10px 0px;
   list-style: none;
 }
 
 /* Display list items side by side */
 ul.breadcrumb li {
   display: inline;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
@@ -145,13 +145,6 @@ ul.breadcrumb li a:hover {
 /* ------------------------------------------------ */
 /*                    Headers                       */
 /*                                                  */
-h1 {
-  margin-top: 40px;
-}
-h3 {
-  margin-top: 40px;
-  margin-bottom: 0px;
-}
 
 /* ------------------------------------------------ */
 /*                   Image Grid                     */
