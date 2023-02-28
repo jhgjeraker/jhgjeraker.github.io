@@ -192,3 +192,19 @@ td {
     padding: 5px;    
     text-align: center;
 }
+
+/* ------------------------------------------------ */
+/*                     Table                        */
+/*                                                  */
+th {
+  padding-right: 15px;
+  font-size: larger;
+}
+
+td {
+  padding-right: 15px;
+}
+
+.tdr {
+  text-align: right;
+}
