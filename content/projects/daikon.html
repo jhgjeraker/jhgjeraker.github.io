@@ -17,13 +17,16 @@
 
     <h1>daikon</h1>
     <p>
-      A mini-project where I've linked Optical Character Recognition (OCR) with Large Language Model (LLM) queries for assisting with reading, grammar, and word lookup of non-selectable Japanese text.
+      A mini-project to solve my own problem of looking up words/sentences in non-selectable Japanese texts using Optical Character Recognition (OCR).
     </p>
     <ul>
       <li><a href="https://github.com/jhgjeraker/daikon" target="_blank" rel="noopener noreferrer">Github</a></li>
     </ul>
     <p>
-      Note that native OCR is not available in Large Language Models (LLMs) at the time of this project, but I fully expect this to become a feature in the future. I made this little implementation simply because I don't want to wait. The power of querying LLMs for explaining unselectable text is just too convenient.
+      Similar tools already exists (see <a href="https://github.com/kha-white/manga-ocr" target="_blank" rel="noopener noreferrer">manga-ocr</a>), but I found them to be generally out-of-date, too complex, or overachieving, so I made my own that I can be in control of. A tool like this must be snappy, easy to use, and with minimal overhead not to break the flow of reading. Otherwise I'll just not use it.
+    </p>
+    <p>
+      
     </p>
     <p>
       Scroll to the end for example usage.
@@ -83,31 +86,27 @@
     <hr>
     <h2>The Project</h2>
     <p>
-      OCR has (finally) become good enough that it can reliably work with both vertical and horizontally aligned Japanese sentences, with and without furigana. This opens the door for all kinds of neat tools that quickly capture unselectable text that can be processed by other tools, like dictionaries or (here) LLMs.
+      OCR has (finally) become good enough that it can reliably work with both vertical and horizontally aligned Japanese sentences, with and without furigana. This opens the door for all kinds of neat tools that quickly capture unselectable text that can be processed by other tools, like dictionaries or LLMs.
     </p>
     <p>
-      I just picked some open-source JP OCR model from <a href="https://huggingface.co/">huggingface</a>, made sure I could run it locally, then cooked up a bash script that sends a query to either OpenAI's API or Jisho depending on the command.
-    </p>
-    <p>
-      This allows for super useful things like OCR-ing a sentence with all kinds of unknown words and grammar, then asking GPT "Translate and explain each grammatical component in the following sentence: OCR_OUTPUT".
+      I just picked some open-source JP OCR model from <a href="https://huggingface.co/">huggingface</a>, made sure I could run it locally, then cooked up a bash script that sends the result to stdout or the clipboard. Pretty convenient. This allows for super useful things like OCR-ing a sentence with all kinds of unknown words and grammar, then maybe asking GPT "Translate and explain each grammatical component in the following sentence: OCR_OUTPUT" in seconds.
     </p>
 
     <h3>Usage</h3>
-    <p>Ask LLM with OCR. Once text has been extracted from the image an editor will popup, allowing you to add context like "explain this" or whatever your question is.</p>
+    <p>
+      Simply call the bash script. This will send the processed text to stdout.
+    </p>
     <code>
-      daikon llm ocr
+      bash daikon.sh
     </code>
+    <p>
+      I'd recommend you place it somewhere in path and call it using the <code>--clipboard</code> flag.
+    </p>
 
-    <h3>Example</h3>
+    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/daikon/example-usage-4.jpeg">
+
     <p>
-      Let's assume I don't know the kanji in the following example, but I also wonder what "なん" means in the context. There are no furigana, so I can't manually rewrite the sentence.
-    </p>
-    <p>
-      Well, now I can capture the entire sentence with OCR, add the question, and send it to the <code>gpt-3.5-turbo</code> model for a pretty decent answer.
-    </p>
-    <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/daikon/example-usage-3.jpeg">
-    <p>
-      How cool is that?! It was totally worth spending the better parts of a day on this. I can now read in peace.
+      If you're running Yomichan in parallell you now essentially have an automatic OCR dictionary. How useful is that?! Now I can read without furigana in peace.
     </p>
 
   </body>
