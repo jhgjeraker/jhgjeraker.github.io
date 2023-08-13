@@ -15,15 +15,13 @@
     --font-mono: var(--font);
     --font-size: 16px;
 
-    --bg: #28292A;
-    --fg: #C8C5C1;
-    --fg-muted: #9F988E;
-
-    --accent: #de8545;
+    --bg: #fff;
+    --fg: #000;
+    --accent: #5D5CA6;
 
     /* Code Blocks */
-    --fg-code: var(--accent);
-    --bg-code: #313334;
+    --fg-code: var(--fg);
+    --bg-code: #F3F6F8;
 
     /* Links */
     --fg-anchor: var(--accent);
@@ -47,7 +45,7 @@ body {
 
 hr {
     border: 0;
-    border-top: 1px solid var(--fg-muted);
+    border-top: 1px solid var(--fg);
     margin-top: 50px;
     margin-bottom: 20px;
 }
@@ -67,6 +65,8 @@ img {
     max-width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
 }
 
 video {
@@ -97,6 +97,7 @@ pre > code {
     padding-bottom: 5px;
     padding-left: 25px;
     overflow: auto;
+    border-radius: 10px;
 }
 
 pre > code > i {
