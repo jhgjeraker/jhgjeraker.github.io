@@ -17,7 +17,7 @@
 
     --bg: #fff;
     --fg: #000;
-    --accent: #5D5CA6;
+    --accent: #f57f36;
 
     /* Code Blocks */
     --fg-code: var(--fg);
@@ -110,7 +110,7 @@ pre > code > i {
 /*                                                  */
 /* Style the list */
 ul.breadcrumb {
-  padding: 10px 0px;
+  padding: 5px 0px;
   list-style: none;
 }
 
@@ -122,7 +122,7 @@ ul.breadcrumb li {
 
 /* Add a slash symbol (/) before/behind each list item */
 ul.breadcrumb li+li:before {
-  padding: 8px;
+  padding: 0px;
   color: var(--fg);
   content: "/\00a0";
 }
@@ -204,4 +204,39 @@ td {
 
 .tdr {
   text-align: right;
+}
+
+/* ------------------------------------------------ */
+/*                      Grid                        */
+/*                                                  */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.grid-item {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* For tablets: */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
