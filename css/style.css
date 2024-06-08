@@ -74,8 +74,6 @@ img {
     max-width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
 }
 
 video {
@@ -248,4 +246,23 @@ td {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+}
+
+.gallery img {
+  /* max-width: 200px; */
+  max-height: 250px;
+  object-fit: cover;
+  margin: 0px;
+}
+
+.gallery img:hover {
+  opacity: 0.8;
 }
