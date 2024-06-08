@@ -249,3 +249,18 @@ td {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0px;
+}
+
+.gallery img {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  margin: 5px;
+}
