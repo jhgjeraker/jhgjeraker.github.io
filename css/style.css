@@ -13,9 +13,9 @@
 :root {
     --font-mono: "iA Writer Mono S";
 
-    --bg: #fff;
-    --fg: #000;
-    --accent: #f57f36;
+    --bg: #F8F5F2;
+    --fg: #575757;
+    --accent: #CD9E82;
 
     /* Code Blocks */
     --fg-code: var(--fg);
@@ -237,7 +237,55 @@ td {
   }
 }
 
+/* ------------------------------------------------ */
+/*                      Card                        */
+/*                                                  */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; /* Adding gap between grid items */
+  align-content: space-between;
+  padding: 10px; /* Adding padding to the container */
+}
 
+.card {
+  position: relative;
+  width: 100%; /* Making the card width responsive */
+  max-width: 200px; /* Setting a max-width for the cards */
+  margin: 0 auto; /* Centering the card */
+  padding: 0px; /* Adding padding inside the card */
+  text-align: center;
+  border-radius: 10px; /* Adding rounded corners */
+  overflow: hidden; /* Ensuring content doesn't overflow */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px; /* Matching the border radius of the card */
+}
+
+/* For tablets: */
+/* @media only screen and (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+} */
+
+/* For mobile phones: */
+@media only screen and (max-width: 600px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ------------------------------------------------ */
+/*                    Gallery                       */
+/*                                                  */
 .gallery {
   display: flex;
   flex-wrap: wrap;
