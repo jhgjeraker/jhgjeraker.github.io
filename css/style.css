@@ -13,13 +13,13 @@
 :root {
     --font-mono: "iA Writer Mono S";
 
-    --bg: #F8F5F2;
-    --fg: #575757;
-    --accent: #CD9E82;
+    --bg: #ffffff;
+    --fg: #444444;
+    --accent: #CD5654;
 
     /* Code Blocks */
     --fg-code: var(--fg);
-    --bg-code: #F3F6F8;
+    --bg-code: #F4F5F7;
 
     /* Links */
     --fg-anchor: var(--accent);
@@ -28,9 +28,10 @@
 html {
   color: var(--fg);
   background-color: var(--bg);
+  line-height: 1.6;
 
   font-size: var(--font-size);
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Avenir Next", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 
   max-width: 1080px;
   margin: 0 auto;
@@ -93,7 +94,7 @@ pre > code {
     padding-bottom: 5px;
     padding-left: 25px;
     overflow: auto;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 pre > code > i {
@@ -255,7 +256,7 @@ td {
   margin: 0 auto; /* Centering the card */
   padding: 0px; /* Adding padding inside the card */
   text-align: center;
-  border-radius: 10px; /* Adding rounded corners */
+  border-radius: 0px; /* Adding rounded corners */
   overflow: hidden; /* Ensuring content doesn't overflow */
 }
 
@@ -265,7 +266,7 @@ td {
   aspect-ratio: 1/1;
   display: block;
   object-fit: cover;
-  border-radius: 10px; /* Matching the border radius of the card */
+  border-radius: 0px; /* Matching the border radius of the card */
 }
 
 /* For tablets: */
@@ -290,7 +291,7 @@ td {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 3px;
+  gap: 5px;
 }
 
 .gallery img {
