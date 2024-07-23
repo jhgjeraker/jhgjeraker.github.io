@@ -137,10 +137,6 @@ ul.breadcrumb li a:hover {
 }
 
 /* ------------------------------------------------ */
-/*                    Headers                       */
-/*                                                  */
-
-/* ------------------------------------------------ */
 /*                   Image Grid                     */
 /*                                                  */
 td {
@@ -224,6 +220,10 @@ td {
   display: block;
 }
 
+.grid-item img:hover {
+  opacity: 0.8;
+}
+
 /* For mobile phones: */
 @media only screen and (max-width: 600px) {
   .grid-container {
@@ -287,6 +287,7 @@ td {
 /* ------------------------------------------------ */
 /*                    Gallery                       */
 /*                                                  */
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -295,12 +296,31 @@ td {
 }
 
 .gallery img {
-  /* max-width: 200px; */
-  max-height: 250px;
+  max-height: 200px;
   object-fit: cover;
   margin: 0px;
 }
 
-.gallery img:hover {
+/* Customer gallery for Seichi Junrei */
+.gallery-seichijunrei-title {
+  margin-top: 20px;
+}
+.gallery-seichijunrei {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.gallery-seichijunrei img {
+  max-height: 200px;
+  object-fit: cover;
+  margin: 0px;
+}
+
+/* Common hover effect */
+.gallery img:hover,
+.gallery-seichijunrei img:hover {
   opacity: 0.8;
 }
