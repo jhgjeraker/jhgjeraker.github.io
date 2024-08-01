@@ -1,20 +1,24 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J. H. Gjeraker</title>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <header>
-    <ul class="breadcrumb">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/content/projects/projects.html">Projects</a></li>
-      <li>2023-04-10</li>
-    </ul>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gjeraker</title>
+  <link rel="stylesheet" href="/css/pico.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="container">
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/content/projects/projects.html">Projects</a></li>
+        <li>daikon</li>
+      </ul>
+    </nav>
   </header>
-  <body>
-
+  
+  <main class="container">
     <h1>daikon</h1>
     <p>
       A mini-project to solve my own problem of looking up words/sentences in non-selectable Japanese texts using Optical Character Recognition (OCR).
@@ -31,8 +35,7 @@
     <p>
       Scroll to the end for example usage.
     </p>
-
-    <hr>
+    
     <h2>Motivation</h2>
     <p>
       Learning to read Japanese without furigana is in my eyes the final frontier of the language. Its presence is usually at the whim of the author, but if you want to read anything more serious than children's material, getting comfortable with raw kanji is essential.
@@ -40,39 +43,38 @@
     <p>
       You cant't "complete" Japanese though. No sane man knows all the kanji, but constant exposure will result in steady progress. I'm an advocate of not looking up a single unknown point. If the overall meaning is understandable, have faith that your brain will, over time, remember the patterns. Actively research a sentence only if it is mostly devoid of meaning as you're clearly lacking some fundamental knowledge.
     </p>
-
+    
     <blockquote>
       We aquire language in one way, and only one way. Comprehensible input in a low anxiety environment.
       <a href="https://www.youtube.com/watch?v=NiTsduRreug" target="_blank" rel="noopener noreferrer">Dr. Stephen Krashen</a>
     </blockquote>
-
+    
     <p>
       I take Dr. Krashen's "Low Anxiety Environment" to also includes the tools you use. Learning a language should be fun, but if looking up a word or grammatical point is a struggle, so too will the learning be a struggle.
     </p>
     <p>
       LLMs have already shown to be an amazing tool for language learning, providing explanations of grammar or sentence structure at your fingertips, but they don't (yet) support OCR, hence this project.
     </p>
-
-    <hr>
+    
     <h2>The Problem(s)</h2>
     <p>
       Take the following sentence presented with and without furigana.
     </p>
-
+    
     <ul>
       <li>これが人類最後の絵になるかもしれないし。</li>
       <li>これが<ruby>人<rt>じん</rt></ruby><ruby>類<rt>るい</rt></ruby><ruby>最<rt>さい</rt></ruby><ruby>後<rt>ご</rt></ruby>の<ruby>絵<rt>え</rt></ruby>になるかもしれないし。</li>
     </ul>
-
+    
     <p>
       Let's say you're a budding learner of Japanese and don't know what 人類最後 means (or that it is actually 2 independent words), and want to figure it out in the following scenarios.
     </p>
-
+    
     <h3>Selectable Text</h3>
     <p>
-       Without furigana, simply copy 人類最後 to <a href="https://jisho.org/" target="_blank" rel="noopener noreferrer">Jisho</a>! However, it is not so simple if you try to copy the same word with furigana, <ruby>人<rt>じん</rt></ruby><ruby>類<rt>るい</rt></ruby><ruby>最<rt>さい</rt></ruby><ruby>後<rt>ご</rt></ruby>. Ironically, what makes it easier to read also makes it annoying to look up.
+      Without furigana, simply copy 人類最後 to <a href="https://jisho.org/" target="_blank" rel="noopener noreferrer">Jisho</a>! However, it is not so simple if you try to copy the same word with furigana, <ruby>人<rt>じん</rt></ruby><ruby>類<rt>るい</rt></ruby><ruby>最<rt>さい</rt></ruby><ruby>後<rt>ご</rt></ruby>. Ironically, what makes it easier to read also makes it annoying to look up.
     </p>
-
+    
     <h3>Non-Selectable Text</h3>
     <p>
       Say what you will about manga, but for learning Japanese they provide an endless source of material from all levels and themes with the added benefit of always providing context through images. The only problem is that even now in 2023, digital format manga in neither PDF nor ePUB come with selectable text. They're all images!
@@ -80,10 +82,9 @@
     <p>
       The common way around this has been either drawing the kanji or looking it up using radical dictionaries, two methods that both of which have serious downsides and completely break the flow of reading.
     </p>
-
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/daikon/IMG_0053.jpg">
     
-    <hr>
     <h2>The Project</h2>
     <p>
       OCR has (finally) become good enough that it can reliably work with both vertical and horizontally aligned Japanese sentences, with and without furigana. This opens the door for all kinds of neat tools that quickly capture unselectable text that can be processed by other tools, like dictionaries or LLMs.
@@ -91,7 +92,7 @@
     <p>
       I just picked some open-source JP OCR model from <a href="https://huggingface.co/">huggingface</a>, made sure I could run it locally, then cooked up a bash script that sends the result to stdout or the clipboard. Pretty convenient. This allows for super useful things like OCR-ing a sentence with all kinds of unknown words and grammar, then maybe asking GPT "Translate and explain each grammatical component in the following sentence: OCR_OUTPUT" in seconds.
     </p>
-
+    
     <h3>Usage</h3>
     <p>
       Simply call the bash script. This will send the processed text to stdout.
@@ -102,12 +103,13 @@
     <p>
       I'd recommend you place it somewhere in path and call it using the <code>--clipboard</code> flag.
     </p>
-
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/daikon/example-usage-4.jpeg">
-
+    
     <p>
       If you're running Yomichan in parallell you now essentially have an automatic OCR dictionary. How useful is that?! Now I can read without furigana in peace.
     </p>
-
-  </body>
+    
+  </main>
+</body>
 </html>

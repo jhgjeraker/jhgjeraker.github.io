@@ -3,121 +3,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J. H. Gjeraker</title>
+    <title>Gjeraker</title>
+    <link rel="stylesheet" href="/css/pico.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
-  <header>
-    <ul class="breadcrumb">
-      <li><a href="/index.html">Home</a></li>
-      <li>Projects</li>
-    </ul>
-  </header>
   <body>
-    <h1>Projects</h1>
-    <ul>
-      <li><a href="/content/projects/daikon.html">Daikon</a></li>
-      <li><a href="/content/projects/bunshi.html">Bunshi</a></li>
-      <li><a href="/content/projects/rnc-color-stretch.html">rnc-color-stretch</a></li>
-      <li><a href="/content/projects/night-sky-stacker.html">Night Sky Stacker</a></li>
-      <li><a href="/content/projects/dtcli.html">disruptive-cli</a></li>
-      <li><a href="https://github.com/jhgjeraker/bspwm-setup" target="_blank" rel="noopener noreferrer">bspwm-setup</a></li>
-    </ul>
+    <header class="container">
+      <nav>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="#" id="toggle-theme">Theme</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <hr>
-    <h2 id="daikon">Daikon</h2>
-    <a href="/content/projects/daikon.html">
-      <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/daikon/example-usage-4.jpeg">
-    </a>
-    <p>
-      Manga are great for learning Japanese, providing visual context for your brain while reading. However, even now in 2023, neither ePUB nor PDF editions has selectable text. This can be quite tedious when transitioning to reading without furigana as dictionary lookup becomes a struggle.
-    </p>
-    <p>
-      Fortunately for us, Optical Character Recognition (OCR) models has come far, so I created a lightweight tool that instantly lets me select and copy text from an image straight to the clipboard.
-    </p>
-    <p>
-      <a href="/content/projects/daikon.html">Read more about daikon.</a>
-    </p>
+    <main class="container">
+      <h1>Projects</h1>
+      <ul>
+        <li><a href="/content/projects/daikon.html">Daikon</a></li>
+        <li><a href="/content/projects/bunshi.html">Bunshi</a></li>
+        <li><a href="/content/projects/rnc-color-stretch.html">rnc-color-stretch</a></li>
+        <li><a href="/content/projects/night-sky-stacker.html">Night Sky Stacker</a></li>
+        <li><a href="/content/projects/dtcli.html">disruptive-cli</a></li>
+        <li><a href="https://github.com/jhgjeraker/bspwm-setup" target="_blank" rel="noopener noreferrer">bspwm-setup</a></li>
+      </ul>
 
-    <hr>
-    <h2 id="bunshi">Bunshi (分子)</h2>
-    <pre><code>
-      <i>$ python main.py 作ったものを見てください</i>
-      <i> </i>
-      <i>作ったものを見てください</i>
-      <i>│          └ 見, see ─ ケン、みる</i>
-      <i>│            ├ 目, eye</i>
-      <i>│            └ 儿, son, legs</i>
-      <i>│              ├ 丿, slash</i>
-      <i>│              └ 乚, second</i>
-      <i>└ 作, make ─ サク、サ、つくる</i>
-      <i>  ├ 亻, man</i>
-      <i>  └ 乍, though, during</i>
-    </code></pre>
-    <p>
-      Kanji can be broken down into one or more base components. Popular courses like KKLC, RTK, and WaniKani use component mnemonics as a method of memorizing kanji, so learning to recognize them can be quite useful.
-    </p>
-    <p>
-      Bunshi is a tiny tool for kanji component decomposition in the terminal. I made it to fill a gap in my existing study technique, reducing the friction associated with component lookup in the browser.
-    </p>
-    <p>
-      <a href="/content/projects/bunshi.html">Read more about Bunshi.</a>
-    </p>
+      <h2 id="daikon">Daikon</h2>
+      <a href="/content/projects/daikon.html">
+        <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/daikon/example-usage-4.jpeg">
+      </a>
+      <p>
+        Manga are great for learning Japanese, providing visual context for your brain while reading. However, even now in 2023, neither ePUB nor PDF editions has selectable text. This can be quite tedious when transitioning to reading without furigana as dictionary lookup becomes a struggle.
+      </p>
+      <p>
+        Fortunately for us, Optical Character Recognition (OCR) models has come far, so I created a lightweight tool that instantly lets me select and copy text from an image straight to the clipboard.
+      </p>
+      <p>
+        <a href="/content/projects/daikon.html">Read more about daikon.</a>
+      </p>
 
-    <hr>
-    <h2 id="rnc-color-stretch">rnc-color-stretch</h2>
-    <a href="/content/projects/rnc-color-stretch.html">
-      <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20211224-orion-mosaic.jpeg">
-    </a>
-    <p>
-      Python adaptation of <code>rnc-color-stretch</code>, an image stretching software used for post-processing stacked astrophotography images originally written in davinci by <a href="https://clarkvision.com/articles/astrophotography.software/rnc-color-stretch/" target="_blank" rel="noopener noreferrer">Roger N. Clark</a>.
-    </p>
-    <p>
-      <a href="/content/projects/rnc-color-stretch.html">Read more about rnc-color-stretch.</a>
-    </p>
+      <h2 id="rnc-color-stretch">rnc-color-stretch</h2>
+      <a href="/content/projects/rnc-color-stretch.html">
+        <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/rnc-color-stretch/20211224-orion-mosaic.jpeg">
+      </a>
+      <p>
+        Python adaptation of <code>rnc-color-stretch</code>, an image stretching software used for post-processing stacked astrophotography images originally written in davinci by <a href="https://clarkvision.com/articles/astrophotography.software/rnc-color-stretch/" target="_blank" rel="noopener noreferrer">Roger N. Clark</a>.
+      </p>
+      <p>
+        <a href="/content/projects/rnc-color-stretch.html">Read more about rnc-color-stretch.</a>
+      </p>
 
-    <hr>
-    <h2 id="nightskystacker">Night Sky Stacker</h2>
-    <a href="/content/projects/night-sky-stacker.html">
-      <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/068.jpeg">
-    </a>
-    <p>
-      One of the main methods of increasing SNR in astrophotography is to stack multiple exposures of the same subject. If shooting with a tripod, all images must first be aligned to account for the Earth's rotation.
-    </p>
-    <p>
-      In this project, I attempt to implement the entire stacking processing chain, including star detection, alignment, transformation, and combination with the goal of drawing out faint details in the frame.
-    </p>
-    <p>
-      <a href="/content/projects/night-sky-stacker.html">Read more about Night Sky Stacker.</a>
-    </p>
+      <h2 id="bunshi">Bunshi (分子)</h2>
+      <pre><code>
+        <i>$ python main.py 作ったものを見てください</i>
+        <i> </i>
+        <i>作ったものを見てください</i>
+        <i>│          └ 見, see ─ ケン、みる</i>
+        <i>│            ├ 目, eye</i>
+        <i>│            └ 儿, son, legs</i>
+        <i>│              ├ 丿, slash</i>
+        <i>│              └ 乚, second</i>
+        <i>└ 作, make ─ サク、サ、つくる</i>
+        <i>  ├ 亻, man</i>
+        <i>  └ 乍, though, during</i>
+      </code></pre>
+      <p>
+        Kanji can be broken down into one or more base components. Popular courses like KKLC, RTK, and WaniKani use component mnemonics as a method of memorizing kanji, so learning to recognize them can be quite useful.
+      </p>
+      <p>
+        Bunshi is a tiny tool for kanji component decomposition in the terminal. I made it to fill a gap in my existing study technique, reducing the friction associated with component lookup in the browser.
+      </p>
+      <p>
+        <a href="/content/projects/bunshi.html">Read more about Bunshi.</a>
+      </p>
 
-    <hr>
-    <h2 id="disruptive-cli">disruptive-cli</h2>
-    <pre><code>
-      <i>$ dt project list</i>
-      <i> </i>
-      <i>PROJECT-ID             DISPLAY-NAME                     SENSOR-COUNT   CLOUD-CONNECTOR-COUNT</i>
-      <i>c10humqoss90036gu530   jhg-playground Inventory         14             0</i>
-      <i>c14u9p094l47cdv1o3pg   main                             11             1</i>
-      <i>br1rrd35443g009mhk60   Default                          0              0</i>
-      <i>c34c05mh9dh7pohjtorg   Sensors I don't know where are   4              1</i>
-      <i>c9akpca7090rjibacslg   B                                9              0</i>
-      <i>c35emu6h9dh7pohjtp4g   Oslo Office                      82             1</i>
-    </code></pre>
-    <p>
-      Unofficial CLI for the Disruptive Technologies (DT) API that I initially made to make my life much easier at work, but quickly turned into a fully-fledged program that includes all features available in our REST API.
-    </p>
-    <p>
-      <a href="/content/projects/dtcli.html">Read more about disruptive-cli.</a>
-    </p>
+      <h2 id="nightskystacker">Night Sky Stacker</h2>
+      <a href="/content/projects/night-sky-stacker.html">
+        <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/068.jpeg">
+      </a>
+      <p>
+        One of the main methods of increasing SNR in astrophotography is to stack multiple exposures of the same subject. If shooting with a tripod, all images must first be aligned to account for the Earth's rotation.
+      </p>
+      <p>
+        In this project, I attempt to implement the entire stacking processing chain, including star detection, alignment, transformation, and combination with the goal of drawing out faint details in the frame.
+      </p>
+      <p>
+        <a href="/content/projects/night-sky-stacker.html">Read more about Night Sky Stacker.</a>
+      </p>
 
-    <hr>
-    <h2 id="bspwm-setup">bspwm-setup</h2>
-    <p>
-      I've developed a habit of reformatting my laptop often, either because I broke my distro or because I want to try something else. I figured I'd save some time by building an automatic deployment script for my bspwm-based development environment. Now I'm up and running in minutes!
-    </p>
-    <p>
-      <a href="https://github.com/jhgjeraker/bspwm-setup" target="_blank" rel="noopener noreferrer">Go to bspwm-setup Github page.</a>
-    </p>
+      <h2 id="disruptive-cli">disruptive-cli</h2>
+      <pre><code>
+        <i>$ dt project list</i>
+        <i> </i>
+        <i>PROJECT-ID             DISPLAY-NAME                     SENSOR-COUNT   CLOUD-CONNECTOR-COUNT</i>
+        <i>c10humqoss90036gu530   jhg-playground Inventory         14             0</i>
+        <i>c14u9p094l47cdv1o3pg   main                             11             1</i>
+        <i>br1rrd35443g009mhk60   Default                          0              0</i>
+        <i>c34c05mh9dh7pohjtorg   Sensors I don't know where are   4              1</i>
+        <i>c9akpca7090rjibacslg   B                                9              0</i>
+        <i>c35emu6h9dh7pohjtp4g   Oslo Office                      82             1</i>
+      </code></pre>
+      <p>
+        Unofficial CLI for the Disruptive Technologies (DT) API that I initially made to make my life much easier at work, but quickly turned into a fully-fledged program that includes all features available in our REST API.
+      </p>
+      <p>
+        <a href="/content/projects/dtcli.html">Read more about disruptive-cli.</a>
+      </p>
 
+      <h2 id="bspwm-setup">bspwm-setup</h2>
+      <p>
+        I've developed a habit of reformatting my laptop often, either because I broke my distro or because I want to try something else. I figured I'd save some time by building an automatic deployment script for my bspwm-based development environment. Now I'm up and running in minutes!
+      </p>
+      <p>
+        <a href="https://github.com/jhgjeraker/bspwm-setup" target="_blank" rel="noopener noreferrer">Go to bspwm-setup Github page.</a>
+      </p>
+    </main>
+    <script src="/js/theme-switcher.js"></script>
   </body>
 </html>

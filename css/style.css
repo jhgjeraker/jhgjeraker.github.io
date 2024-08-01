@@ -1,326 +1,82 @@
-
-@font-face {
-    font-family: 'iA Writer Mono S';
-    src:
-        url('../assets/fonts/iAWriter/iAWriterMonoS-Regular.woff2') format('woff2'),
-        url('../assets/fonts/iAWriter/iAWriterMonoS-Regular.woff') format('woff'),
-        url('../assets/fonts/iAWriter/iAWriterMonoS-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
 :root {
-    --font-mono: "iA Writer Mono S";
-
-    --bg: #ffffff;
-    --fg: #444444;
-    --accent: #CD5654;
-
-    /* Code Blocks */
-    --fg-code: var(--fg);
-    --bg-code: #F4F5F7;
-
-    /* Links */
-    --fg-anchor: var(--accent);
+  --font-family: "Avenir Next", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  --accent: #CD5654;
+  --gallery-spacing: 5px;
 }
 
-html {
-  color: var(--fg);
-  background-color: var(--bg);
-  line-height: 1.6;
-
-  font-size: var(--font-size);
-  font-family: "Avenir Next", "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-
-  max-width: 1080px;
-  margin: 0 auto;
+/* --------------------------------------------------------------- */
+/*                              Pico                               */
+[data-theme=light],
+:root:not([data-theme=dark]) {
+  --pico-primary: var(--accent);
+  --pico-font-family: var(--font-family);
+  --pico-grid-row-gap: var(--gallery-spacing);
+  --pico-grid-column-gap: var(--gallery-spacing);
+}
+[data-theme=dark] {
+  --pico-font-family: var(--font-family);
+}
+@media (min-width: 1280px) {
+  :root {
+    --pico-font-size: 118.75%;
+  }
+}
+@media (min-width: 1536px) {
+  :root {
+    --pico-font-size: 118.75%;
+  }
 }
 
-body {
-    margin: 15px;
-    padding-bottom: 100px;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid var(--fg);
-    margin-top: 50px;
-    margin-bottom: 20px;
-}
-
-/* Links */
+/* --------------------------------------------------------------- */
+/*                              Core                               */
 a {
-    color: var(--fg-anchor);
-    text-decoration: none;
-}
-
-/* Links when hovered */
-a:hover {
-  text-decoration: underline;
-}
-
-img {
-    max-width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-video {
-    max-width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-li+li {
-  margin-top: 4px;
-}
-
-/* ------------------------------------------------ */
-/*                  Code Blocks                     */
-/*                                                  */
-code {
-    color: var(--fg-code);
-    background-color: var(--bg-code);
-    font-size: var(--font-size);
-    font: var(--font-mono);
-    padding: 3px;
-}
-
-pre > code {
-    display: block;
-    white-space: pre-line;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 25px;
-    overflow: auto;
-    border-radius: 0px;
-}
-
-pre > code > i {
-    white-space: pre;
-    font-style: normal;
-}
-
-/* ------------------------------------------------ */
-/*                  Breadcrumbs                     */
-/*                                                  */
-/* Style the list */
-ul.breadcrumb {
-  padding: 5px 0px;
-  list-style: none;
-}
-
-/* Display list items side by side */
-ul.breadcrumb li {
-  display: inline;
-  font-size: 16px;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-ul.breadcrumb li+li:before {
-  padding: 0px;
-  color: var(--fg);
-  content: "/\00a0";
-}
-
-/* Add a color to all links inside the list */
-ul.breadcrumb li a {
-  color: var(--accent);
   text-decoration: none;
 }
-
-/* Add a color on mouse-over */
-ul.breadcrumb li a:hover {
-  color:var(--accent);
-  text-decoration: underline;
+/* Add top margin to images that follow another image in main */
+main:has(> img + img) img {
+  margin-top: var(--pico-spacing);
+}
+/* Add top margin to paragraphs that follow an image in main */
+main:has(> img + p) p {
+  margin-top: var(--pico-spacing);
+}
+/* Add top margin to h2 that follow an image in main */
+main:has(> img + h2) h2 {
+  margin-top: var(--pico-typography-spacing-top);
+}
+/* Add top margin to h2 that follow a div in main */
+main:has(> div + h2) h2 {
+  margin-top: var(--pico-typography-spacing-top);
 }
 
-/* ------------------------------------------------ */
-/*                   Image Grid                     */
-/*                                                  */
-td {
-  vertical-align: top;
-}
-
-/* ------------------------------------------------ */
-/*                      Math                        */
-/*                                                  */
-.mathblock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  letter-spacing: 2px;
-  font-family: "serif";
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.matrix {
-    position: relative;
-    display: inline-block;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-.matrix:before, .matrix:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    border: 1px solid var(--fg);
-    width: 6px;
-    height: 100%;
-}
-.matrix:before {
-    left: -6px;
-    border-right: 0px;
-}
-.matrix:after {
-    right: -6px;
-    border-left: 0px;
-}
-.matrix td {
-    padding: 5px;    
-    text-align: center;
-}
-
-/* ------------------------------------------------ */
-/*                     Table                        */
-/*                                                  */
-th {
-  padding-right: 15px;
-  font-size: larger;
-}
-
-td {
-  padding-right: 15px;
-}
-
-.tdr {
-  text-align: right;
-}
-
-/* ------------------------------------------------ */
-/*                      Grid                        */
-/*                                                  */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.grid-item {
-  position: relative;
-  width: 100%;
-  text-align: center;
-}
-
-.grid-item img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.grid-item img:hover {
-  opacity: 0.8;
-}
-
-/* For mobile phones: */
-@media only screen and (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-/* For tablets: */
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ------------------------------------------------ */
-/*                      Card                        */
-/*                                                  */
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px; /* Adding gap between grid items */
-  align-content: space-between;
-  padding: 10px; /* Adding padding to the container */
-}
-
-.card {
-  position: relative;
-  width: 100%; /* Making the card width responsive */
-  max-width: 200px; /* Setting a max-width for the cards */
-  margin: 0 auto; /* Centering the card */
-  padding: 0px; /* Adding padding inside the card */
-  text-align: center;
-  border-radius: 0px; /* Adding rounded corners */
-  overflow: hidden; /* Ensuring content doesn't overflow */
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1/1;
-  display: block;
-  object-fit: cover;
-  border-radius: 0px; /* Matching the border radius of the card */
-}
-
-/* For tablets: */
-/* @media only screen and (max-width: 900px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-} */
-
-/* For mobile phones: */
-@media only screen and (max-width: 600px) {
-  .card-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-/* ------------------------------------------------ */
-/*                    Gallery                       */
-/*                                                  */
-
+/* --------------------------------------------------------------- */
+/*                            Gallery                              */
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
+  justify-content: left;
+  gap: var(--gallery-spacing);
+  margin-bottom: var(--gallery-spacing);
 }
-
 .gallery img {
   max-height: 200px;
-  object-fit: cover;
+}
+.gallery img:hover {
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------- */
+/*                              Grid                               */
+.grid {
+  /* margin-bottom: var(--pico-spacing); */
+  margin-bottom: var(--gallery-spacing);
+}
+.grid p {
   margin: 0px;
 }
-
-/* Customer gallery for Seichi Junrei */
-.gallery-seichijunrei-title {
-  margin-top: 20px;
+.grid img {
+  width: 100%;
 }
-.gallery-seichijunrei {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  gap: 5px;
-  margin-bottom: 5px;
-}
-
-.gallery-seichijunrei img {
-  max-height: 200px;
-  object-fit: cover;
-  margin: 0px;
-}
-
-/* Common hover effect */
-.gallery img:hover,
-.gallery-seichijunrei img:hover {
+.grid img:hover {
   opacity: 0.8;
 }

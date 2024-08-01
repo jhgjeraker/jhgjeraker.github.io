@@ -1,43 +1,47 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J. H. Gjeraker</title>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <header>
-    <ul class="breadcrumb">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/content/projects/projects.html">Projects</a></li>
-      <li>Stacker</li>
-    </ul>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gjeraker</title>
+  <link rel="stylesheet" href="/css/pico.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="container">
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/content/projects/projects.html">Projects</a></li>
+        <li>Stacker</li>
+      </ul>
+    </nav>
   </header>
-  <body>
+  
+  <main class="container">
     <h1>Night Sky Stacker</h1>
     <p>
       An exploratory project where I attempt to implement my own astrophotography image stacker that corrects for the earth's rotation, allowing us to boost the image signal by combining multiple frames.
     </p>
-
+    
     <ul>
       <li><a href="#background">Background</a></li>
       <li><a href="#implementation">Implementation</a></li>
       <li><a href="#result">Result</a></li>
       <li><a href="#todo">To Do</a></li>
     </ul>
-
+    
     <p>
       Parts of the implementation is shown below. For each of the 70 frames in <a href="/content/astrophotography/m31/20211225.html" target="_blank" rel="noopener noreferrer">2021-12-25 Andromeda</a> (left), stars are detected, registered, and coordinates transformed (mid) to account for the Earth's rotation (right).
     </p>
-
+    
     <video width=100%, autoplay controls loop>
       <source src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/05.mp4" type="video/mp4">
     </video>
     <p>
       You can click the animation loop to pause.
     </p>
-
-    <hr>
+    
     <h2 id="background">Background</h2>
     <p>
       This was supposed to be a small test to see if I could detect stars using a blob-detection algorithm I stumbled across. Turns out, to my delight, that it can! It did, however, end up snowballing into a project.
@@ -52,13 +56,12 @@
     <p>
       While I will continue using it DeepSkyStacker, it seems that my implementation here is capable of at least simpler stacks should my relationship with windows further degrade, which is nice.
     </p>
-
-    <hr>
+    
     <h2 id="implementation">Implementation</h2>
     <p>
       The source code has not yet been provided as it is unfit for any 3rd party human to see. This was supposed to be a small star detection test only, but as the project grew, so did the Jupyter Notebook it lives in.
     </p>
-
+    
     <ul>
       <li><a href="#star-detection">1 Star Detection</a></li>
       <ul>
@@ -72,18 +75,18 @@
       <li><a href="#transform">3 Coordinate Transform</a></li>
       <li><a href="#stacking">4 Stacking</a></li>
     </ul>
-
+    
     <h3 id="star-detection">1 Star Detection</h3>
     <p>
       The Laplacian of Gaussian algorithm is what got me started. I love how elegant it is. It achieves blob (star) detection by representing the data at multiple scales which, when normalized, allows for the detection of blobs of various sizes, manifesting as local minima in the constructed scale-space volume.
     </p>
-
+    
     <h4 id="scale-space">1.1 Scale-Space Representation</h4>
     <p>
       I won't repeat what <a href="https://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian" target="_blank" rel="noopener noreferrer">Wikipedia already explains well</a>, but in essence, the scale-space representation is constructed by convolving the data with Gaussian kernels at various standard deviations <math>σ</math>, then applying the Laplacian operator to each slice in the resulting volume.
     </p>
     <p>
-    An example of the resulting scale-space volume is shown in the figure below. What's interesting, and quite useful, is that there exists a relationship between <math>σ</math> and the blob radius <math>r</math> given by
+      An example of the resulting scale-space volume is shown in the figure below. What's interesting, and quite useful, is that there exists a relationship between <math>σ</math> and the blob radius <math>r</math> given by
     </p>
     <div class=mathblock>
       r=(2σ^2)^(1/2),
@@ -91,9 +94,9 @@
     <p>
       which conveniently lets us target a range of blob radii. The aforementioned Laplacian operator produces a strong negative result for blobs that fall into one of the chosen scales, here inverted as white spots.
     </p>
-
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/scale-space.jpeg">
-
+    
     <p>
       I recommend reading the works of T. Lindeberg for a proper exploration of scale-space theory.
     </p>
@@ -101,7 +104,7 @@
       <li>T. Lindeberg. Scale-Space Theory in Computer Vision</li>
       <li>T. Lindeberg. Discrete Scale-Space Theory and the Scale-Space Primal Sketch</li>
     </ul>
-
+    
     <h4 id="local-minima">1.2 Finding Local Minima</h4>
     <p>
       Once we got our scale-space volume, which includes built-in noise suppression from the Gaussian kernels, we define a star to be any point that has a lower value than its 26 neighbors, aka a 3D local minima.
@@ -109,94 +112,50 @@
     <p>
       The figure below shows the brightest 50 stars detected in each of the 70 frames individually, full image (left) and zoomed in (right). The streaks indicate reliable detection in both space and time.
     </p>
-
-
+    
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/03.jpeg">
-
+    
     <h3 id="point-cloud-reg">2 Point-Cloud Registration</h3>
     <p>
-    Assuming there is significant overlap in detected stars between frames, we now want to find the transform that best fits the coordinates in a frame <math>A</math> to another <math>B</math>, or a Point-Cloud Registration. These can get complex, but our case is simple as a rigid transformation with translation and rotation is sufficient.
+      Assuming there is significant overlap in detected stars between frames, we now want to find the transform that best fits the coordinates in a frame <math>A</math> to another <math>B</math>, or a Point-Cloud Registration. These can get complex, but our case is simple as a rigid transformation with translation and rotation is sufficient.
     </p>
     <h4 id="icp">2.1 Iterative Closest Point</h4>
     <p>
-    After much faffing about with all kinds of fancy algorithms I found that <a href="https://en.wikipedia.org/wiki/Point-set_registration#Iterative_closest_point" target="_blank" rel="noopener noreferrer">Iterative Closest Point (ICP)</a>, which is comparatively simple, did what I wanted reliably. It finds, for each step, the closest distances between points in <math>A</math> and <math>B</math>, then solves the least squares problem to find the best transformation that fits them.
+      After much faffing about with all kinds of fancy algorithms I found that <a href="https://en.wikipedia.org/wiki/Point-set_registration#Iterative_closest_point" target="_blank" rel="noopener noreferrer">Iterative Closest Point (ICP)</a>, which is comparatively simple, did what I wanted reliably. It finds, for each step, the closest distances between points in <math>A</math> and <math>B</math>, then solves the least squares problem to find the best transformation that fits them.
     </p>
     <p>
-    One problem is, however, that the ICP assumes that all the points in <math>A</math> will have a match in <math>B</math>, which is not at all the case for us here as there is no guarantee that all stars detected between the two frames are the same. This will result in the ICP never properly converging and must be dealt with.
+      One problem is, however, that the ICP assumes that all the points in <math>A</math> will have a match in <math>B</math>, which is not at all the case for us here as there is no guarantee that all stars detected between the two frames are the same. This will result in the ICP never properly converging and must be dealt with.
     </p>
     <p>
-    If we assume that most, but not all, stars are the same between <math>A</math> and <math>B</math>, we filter outlier distances in each iteration before fitting using <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation" target="_blank" rel="noopener noreferrer">Median Absolute Deviation (MAD)</a>, a robust statistic. Given by
+      If we assume that most, but not all, stars are the same between <math>A</math> and <math>B</math>, we filter outlier distances in each iteration before fitting using <a href="https://en.wikipedia.org/wiki/Median_absolute_deviation" target="_blank" rel="noopener noreferrer">Median Absolute Deviation (MAD)</a>, a robust statistic. Given by
     </p>
     <div class=mathblock>
       MAD=median(|D_i - median(D)|),
     </div>
     <p>
-    where <math>D</math> is the distance array, we can remove all outliers in each step, letting the ICP converge on a set of stars that exists in both frames <math>A</math> and <math>B</math>, leading to a far better fit than if all stars were included.
+      where <math>D</math> is the distance array, we can remove all outliers in each step, letting the ICP converge on a set of stars that exists in both frames <math>A</math> and <math>B</math>, leading to a far better fit than if all stars were included.
     </p>
     <p>
-    The figure below shows the same image as above (1.2), but where the same points have been fitted to the coordinates of the stars in the middle-most frame (30), superimposed onto the raw image.
+      The figure below shows the same image as above (1.2), but where the same points have been fitted to the coordinates of the stars in the middle-most frame (30), superimposed onto the raw image.
     </p>
-
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/04.jpeg">
     <p>
       It was observed that the fit is gradually worse closer to the edges, introducing a drift of a few pixels. This is likely the lens warping slightly at the edges, a common artifact.
     </p>
-
+    
     <h3 id="transform">3 Coordinate Transform</h3>
     <p>
-    We now got the individual transformation matrices per frame, and simple matrix multiplication can be utilized to find the new coordinates [x', y'] for each original pixel [x, y] as the linear transformation
+      We now got the individual transformation matrices per frame, and simple matrix multiplication can be utilized to find the new coordinates [x', y'] for each original pixel [x, y] as a linear transformation. Pixels that fall outside the original frame matrix shape are discarded, and vacant cells are left empty.
     </p>
-
-    <div class=mathblock>
-      <table class="matrix">
-        <tr>
-          <td>x'</td>
-        </tr>
-        <tr>
-          <td>y'</td>
-        </tr>
-      </table>
-      =c'=Rc+T=
-      <table class="matrix">
-        <tr>
-          <td>cosθ</td>
-          <td>-sinθ</td>
-        </tr>
-        <tr>
-          <td>sinθ</td>
-          <td>cosθ</td>
-        </tr>
-      </table>
-      <table class="matrix">
-        <tr>
-          <td>x</td>
-        </tr>
-        <tr>
-          <td>y</td>
-        </tr>
-      </table>
-      +
-      <table class="matrix">
-        <tr>
-          <td>Tx</td>
-        </tr>
-        <tr>
-          <td>Ty</td>
-        </tr>
-      </table>
-      ,
-    </div>
-
-    <p>
-      where <math>T</math> and <math>R</math> is the translation and rotation matrix respectively. Pixels that fall outside the original frame matrix shape are discarded, and vacant cells are left empty.
-    </p>
-
+    
     <p>
       Below is a visualization of the transformation. Stars are detected (orange dots) in the raw image, then fitted the reference stars (green dots) using ICP. The output transform is represented by the blue lines. Applying the same transform to each pixel in the raw image gives us the result shown to the right.
     </p>
-
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/068.jpeg">
-
+    
     <h3 id="stacking">Stacking</h3>
     <p>
       Once all 70 frames have been aligned they can be combined to draw out faint signals and suppress noise. I've implemented Kappa-Sigma Clipping, a simple but reliable stacking algorithm that for each iteration rejects information per pixel that falls outside the range
@@ -205,10 +164,9 @@
       μ∓σκ,
     </div>
     <p>
-    where <math>μ</math> is the average, <math>σ</math> the standard deviation, and <math>κ</math> a multiplier.
+      where <math>μ</math> is the average, <math>σ</math> the standard deviation, and <math>κ</math> a multiplier.
     </p>
-
-    <hr>
+    
     <h2 id="result">Result</h2>
     <p>
       This project was a treat to work on, and I'm quite happy with the results. Without patting myself too hard on the back, my DIY stacking implementation turned out much better than I anticipated. I can actually use this.
@@ -216,15 +174,14 @@
     <p>
       The figure below compares a crop of frame 30 (left) to all 70 frames stacked (right) by the implementation described in this project. All three (RGB) channels have been aligned. The white areas seen on the right are expected edge effects from the transformation.
     </p>
-
+    
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/06.jpeg">
-
+    
     <p>
       Below is the same comparison, but zoomed in to highlight the difference in SNR. Faint stars that are effectively invisible in a single frame can clearly be seen in the stacked result.
     </p>
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/projects/night-sky-stacker/06-zoom.jpeg">
-
-    <hr>
+    
     <h2 id="todo">To Do</h2>
     <ul>
       <li>
@@ -234,6 +191,7 @@
         Implement and package as a contained CLI.
       </li>
     </ul>
-
-  </body>
+    
+  </main>
+</body>
 </html>

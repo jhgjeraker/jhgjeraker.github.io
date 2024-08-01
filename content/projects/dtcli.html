@@ -1,20 +1,24 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J. H. Gjeraker</title>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <header>
-    <ul class="breadcrumb">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/content/projects/projects.html">Projects</a></li>
-      <li>disruptive-cli</li>
-    </ul>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gjeraker</title>
+  <link rel="stylesheet" href="/css/pico.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="container">
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/content/projects/projects.html">Projects</a></li>
+        <li>disruptive-cli</li>
+      </ul>
+    </nav>
   </header>
-  <body>
-
+  
+  <main class="container">
     <h1>disruptive-cli</h1>
     <p>
       Unofficial CLI for the Disruptive Technologies (DT) API.
@@ -34,8 +38,7 @@
     <p>
       Though I'm a frequent user of CLIs both through work and outside, I had never created one. To avoid my own ingrained biases, the design is heavily inspired by the excellent <a href="https://clig.dev/" target="_blank" rel="noopener noreferrer">CLI Guidelines</a>, a must-read for anyone looking into designing their own CLI.
     </p>
-
-    <hr>
+    
     <h2>Usage</h2>
     <p>
       Call the <code>dt</code> command using a <code>dt &lt;NOUN&gt; &lt;VERB&gt;</code> syntax.
@@ -44,21 +47,20 @@
       <i>dt project list</i>
     </code></pre>
     <p>
-    See <code>dt -h</code> or the <a href="https://github.com/jhgjeraker/disruptive-cli" target="_blank" rel="noopener noreferrer">Github</a> page for more usage details.
+      See <code>dt -h</code> or the <a href="https://github.com/jhgjeraker/disruptive-cli" target="_blank" rel="noopener noreferrer">Github</a> page for more usage details.
     </p>
-
-    <hr>
+    
     <h2>Formats</h2>
     <p>
       A human-readable tabular output is prioritized, while CSV, TSV, and JSON is also supported.
     </p>
-
+    
     <h3>Tabular Output</h3>
     <p>
       It was an interesting challenge to implement the table structure. It should be easy to read while also being natively supported by tools like <code>awk</code>. One should also be able to chain commands using pipes, which means support for including/excluding columns.
     </p>
     <p>
-    The result was a simple but functional table where column values decide their width dynamically. Headers are case-insensitive and be hidden using <code>--no-header</code>, and columns isolated with the <code>--include</code> flag.
+      The result was a simple but functional table where column values decide their width dynamically. Headers are case-insensitive and be hidden using <code>--no-header</code>, and columns isolated with the <code>--include</code> flag.
     </p>
     <pre><code>
       <i>PROJECT-ID             DISPLAY-NAME                     SENSOR-COUNT   CLOUD-CONNECTOR-COUNT</i>
@@ -69,10 +71,10 @@
       <i>c9akpca7090rjibacslg   B                                9              0</i>
       <i>c35emu6h9dh7pohjtp4g   Oslo Office                      82             1</i>
     </code></pre>
-
+    
     <h3>Common Formats</h3>
     <p>
-    Depending on usage, writing the output to a common file format can save a lot of time, and <code>disruptive-cli</code> supports all of the following formats using their namesake flags.
+      Depending on usage, writing the output to a common file format can save a lot of time, and <code>disruptive-cli</code> supports all of the following formats using their namesake flags.
     </p>
     <ul>
       <li><code>--csv</code></li>
@@ -82,11 +84,10 @@
     <p>
       It is supported to pipe the output of <code>--json</code> into <code>jq</code>.
     </p>
-
-    <hr>
+    
     <h2>Chaining Commands</h2>
     <p>
-    Piping is one of the most powerful features of a CLI, and I'm pretty happy with how I've implemented the behavior. After some back and forth I decided to use the <code>-</code> symbol for pipe input, where the values come from isolated column values in the preceding.
+      Piping is one of the most powerful features of a CLI, and I'm pretty happy with how I've implemented the behavior. After some back and forth I decided to use the <code>-</code> symbol for pipe input, where the values come from isolated column values in the preceding.
     </p>
     <p>
       In the following example all project IDs are piped into a command which lists all devices in a single project, resulting in a list of all devices in all projects.
@@ -97,8 +98,7 @@
     <p>
       Notice the <code>-</code> symbol which replaces each project ID in <code>dt device list</code>.
     </p>
-
-    <hr>
+    
     <h2>Interactive Mode</h2>
     <p>
       Quite a few endpoints on the DT API have a lot of optional arguments, and an interactive mode lets me take it one step at a time. Piping is currently not supported whilst using interactive mode.
@@ -122,6 +122,7 @@
     <p>
       You could, of course, just check the possible arguments using <code>-h</code> flag instead.
     </p>
-
-  </body>
+    
+  </main>
+</body>
 </html>

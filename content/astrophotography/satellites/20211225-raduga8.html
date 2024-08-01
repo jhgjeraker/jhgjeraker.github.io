@@ -1,20 +1,24 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>J. H. Gjeraker</title>
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <header>
-    <ul class="breadcrumb">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/content/astrophotography/astrophotography.html">Astrophotography</a></li>
-      <li>2021-12-25</li>
-    </ul>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gjeraker</title>
+  <link rel="stylesheet" href="/css/pico.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="container">
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/content/astrophotography/astrophotography.html">Astrophotography</a></li>
+        <li>2021-12-25</li>
+      </ul>
+    </nav>
   </header>
-  <body>
-
+  
+  <main class="container">
     <h1>2021-12-25 Raduga 8</h1>
     <p>
       Looking through my astrophotography archive I spotted this little mystery in a sequence of RAW images.
@@ -25,12 +29,11 @@
     <p>
       What we see here is the <a href="https://www.n2yo.com/satellite/?s=12351" target="_blank" rel="noopener noreferrer">geostationary communications satellite Raduga 8</a>, launched by the USSR in 1981. It is reflecting the sun at us from over 35,000km away in a 15++ second long flare. Pretty neat!
     </p>
-
+    
     <p>
       Here's quickly the steps I used to identify it.
     </p>
-
-    <hr>
+    
     <h2>Metadata</h2>
     <ul>
       <li><b>Location </b>
@@ -54,18 +57,16 @@
         </ul>
       </li>
     </ul>
-
-    <hr>
+    
     <h2>Equatorial Coordinates</h2>
     <p>
-    Identifying any object in the night sky is a whole lot easier if we know the <a href="https://astronomy.swin.edu.au/cosmos/e/equatorial+coordinate+system" target="_blank" rel="noopener noreferrer">equatorial coordinates</a>. With the wide-angle lens and Orion in the left-hand corner, this is pretty simple in this case, but I'll use the great <a href="https://nova.astrometry.net/" target="_blank" rel="noopener noreferrer">Astrometry.net</a> which can superimpose a grid directly onto the image. Very convenient!
+      Identifying any object in the night sky is a whole lot easier if we know the <a href="https://astronomy.swin.edu.au/cosmos/e/equatorial+coordinate+system" target="_blank" rel="noopener noreferrer">equatorial coordinates</a>. With the wide-angle lens and Orion in the left-hand corner, this is pretty simple in this case, but I'll use the great <a href="https://nova.astrometry.net/" target="_blank" rel="noopener noreferrer">Astrometry.net</a> which can superimpose a grid directly onto the image. Very convenient!
     </p>
     <p>
       The result is shown below, and we eyeball the coordinates to approximately <code>Ra04h15m/Dec+1°50'</code>.
     </p>
     <img src="https://f002.backblazeb2.com/file/bb-gjeraker/astrophotography/satellites/raduga8/20211225/grid-labeled.jpeg">
-
-    <hr>
+    
     <h2>Satellite Database</h2>
     <p>
       By combining the coordinates with the exact time of capture, a database like <a href="https://in-the-sky.org/satmap_planetarium.php?latitude=60.0430&longitude=5.4257&timezone=%2B01%3A00" target="_blank" rel="noopener noreferrer">In-The-Sky.org</a> can be used to reference what should, hopefully, be located at his exact time and place.
@@ -77,6 +78,7 @@
     <p>
       While this was not exactly a major challenge, it was a fun exercise in locating objects in the night sky.
     </p>
-
-  </body>
+    
+  </main>
+</body>
 </html>
